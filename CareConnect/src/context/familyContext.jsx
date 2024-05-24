@@ -1,11 +1,13 @@
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import FamilyRepository from '../Repositories/familiesRepositories';
 
 const FamilyContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const FamilyProvider = ({ children }) => {
   const [families, setFamilies] = useState([]);
-  const [selectedFamily, setSelectedFamily] = useState(null); // Adicionado para gerenciar a seleção da família
+  const [selectedFamily, setSelectedFamily] = useState(null); 
 
   const fetchFamilies = async () => {
     try {
@@ -75,6 +77,7 @@ const FamilyProvider = ({ children }) => {
 
 export { FamilyContext, FamilyProvider };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFamilyContext = () => useContext(FamilyContext);
 
 

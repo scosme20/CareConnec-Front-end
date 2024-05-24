@@ -26,7 +26,7 @@ const FamiliesForm = () => {
     } else {
       createFamily(formData);
     }
-    clearSelection(); // Limpa a seleção após o envio do formulário
+    clearSelection(); 
   };
 
   return (
@@ -34,7 +34,7 @@ const FamiliesForm = () => {
       <Input name="name" value={formData.name} onChange={handleChange} placeholder="Nome" required />
       <Input name="register" value={formData.register} onChange={handleChange} placeholder="Registro" required />
       <Input name="donation" value={formData.donation} onChange={handleChange} placeholder="Doação" required />
-      <Input name="followUp" value={formData.followUp} onChange={handleChange} placeholder="Acompanhamento" required />
+      <Input name="followUp" value={formData.followUp} onChange={handleChange} placeholder="Acompanhamento (sim ou não)" required />
       <Button type="submit">Salvar</Button>
       {selectedFamily && <Button type="button" onClick={clearSelection}>Cancelar</Button>}
     </Form>
@@ -42,6 +42,8 @@ const FamiliesForm = () => {
 };
 
 export default FamiliesForm;
+
+
 
 
 
