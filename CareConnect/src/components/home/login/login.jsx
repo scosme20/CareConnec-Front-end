@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logger } from '../../../logs/logger';
+// import { logger } from '../../../logs/logger';
 import { FormContainer } from '../../../styles/LoginStyles';
+import GlobalStyles from '../../../styles/Global.styles';
+
+
+
+
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +27,9 @@ export const Login = () => {
   };
 
   return (
+    
     <FormContainer onSubmit={handleLogin}>
+      <GlobalStyles />
       <h2>Login</h2>
       <div>
         <label>Email:</label>
@@ -44,6 +51,7 @@ export const Login = () => {
       </div>
       <button type="submit">Log In</button>
     </FormContainer>
+   
   );
 };
 

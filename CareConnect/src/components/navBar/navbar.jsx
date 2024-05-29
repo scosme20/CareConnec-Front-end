@@ -3,10 +3,13 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { NavLink } from 'react-router-dom';
 import { NavbarContainer, NavLinks, NavLinkItem, NavigationLink } from './navBarStyles';
+import GlobalStyles from '../../styles/Global.styles';
+
 
 function Navbar() {
   return (
     <NavbarContainer>
+      <GlobalStyles />
       <NavLinks>
         <NavLinkItem>
           <NavigationLink to="/overview" activeclassname="active">Overview</NavigationLink>

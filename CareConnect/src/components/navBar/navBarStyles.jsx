@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 export const NavbarContainer = styled.nav`
   background-color: #333;
   padding: 10px;
+  position: relative;
+  z-index: 1;
 `;
 
 // Estilos para os links de navegação

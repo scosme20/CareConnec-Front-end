@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
-import { logger } from '../logs/logger';
+// import { logger } from '../logs/logger';
 
 class ErrorBoundary extends Component {
   constructor(props) {

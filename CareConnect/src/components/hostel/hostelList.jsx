@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHostelContext } from '../../context/hostelContext';
 import { ListContainer, Item } from '../../styles/style';
+import { Trash, PencilSimple } from "@phosphor-icons/react";
 
 const HostelList = () => {
   const { hostels, deleteHostel, selectHostel, edit } = useHostelContext(); 
@@ -10,6 +11,7 @@ const HostelList = () => {
   }
 
   return (
+    <div>
     <ListContainer>
       <h2>Lista de Albergues</h2>
       {hostels.map(hostel => (
@@ -18,11 +20,16 @@ const HostelList = () => {
           <p>Localização: {hostel.localizacao}</p>
           <p>Capacidade: {hostel.capacidade}</p>
           <p>Serviços: {hostel.servicos}</p>
-          <button onClick={() => deleteHostel(hostel._id)}>Excluir</button>
-          <button onClick={() => edit(hostel)}>Editar</button>
+          <button onClick={() => deleteHostel(hostel._id)}>
+            <Trash size={32} />
+          </button>
+          <button onClick={() => edit(hostel)}>
+            <PencilSimple size={32} />
+          </button>
         </Item>
       ))}
     </ListContainer>
+    </div>
   );
 };
 

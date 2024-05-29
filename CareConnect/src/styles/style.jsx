@@ -1,10 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 400px;
   margin-bottom: 20px;
+
+ 
 `;
 
 export const Input = styled.input`
@@ -32,31 +34,32 @@ export const ListContainer = styled.div`
 `;
 
 export const Item = styled.div`
-  border: 1px solid blue;
+  border: 1px solid #333533;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
 
   h3 {
-    color: red;
+    color: #333533;
     margin-bottom: 5px;
   }
 
   p {
-    color: black;
+    color: #333533;
     margin-bottom: 3px;
   }
 
   button {
     background-color: white;
-    color: red;
-    border: 1px solid red;
+    color: black;
+    border: 1px solid black;
     border-radius: 3px;
-    padding: 5px 10px;
+     margin-top: 5px;
+    margin-right: 10px;
     cursor: pointer;
 
     &:hover {
-      background-color: red;
+      background-color: #F5CB5C;
       color: white;
     }
   }

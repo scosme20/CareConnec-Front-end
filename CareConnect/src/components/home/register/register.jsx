@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logger } from '../../../logs/logger';
+// import { logger } from '../../../logs/logger';
 import { FormContainer } from '../../../styles/RegisterStyles';
 
 export const Register = () => {
