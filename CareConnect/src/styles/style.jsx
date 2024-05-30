@@ -6,7 +6,13 @@ export const FormContainer = styled.form`
   max-width: 400px;
   margin-bottom: 20px;
 
- 
+  @media (max-width: 768px) {
+    max-width: 300px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;
 
 export const Input = styled.input`
@@ -14,6 +20,14 @@ export const Input = styled.input`
   margin-bottom: 10px;
   border: 2px solid blue;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px;
+  }
 `;
 
 export const Button = styled.button`
@@ -27,10 +41,27 @@ export const Button = styled.button`
   &:hover {
     background-color: darkgreen;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
 `;
 
 export const ListContainer = styled.div`
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 15px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
 `;
 
 export const Item = styled.div`
@@ -54,13 +85,24 @@ export const Item = styled.div`
     color: black;
     border: 1px solid black;
     border-radius: 3px;
-     margin-top: 5px;
+    margin-top: 5px;
     margin-right: 10px;
     cursor: pointer;
 
     &:hover {
       background-color: #F5CB5C;
       color: white;
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 5px;
+      padding: 8px 16px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 6px 12px;
+      font-size: 0.8em;
+      
     }
   }
 `;

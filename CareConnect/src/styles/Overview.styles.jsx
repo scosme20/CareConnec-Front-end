@@ -66,11 +66,12 @@ color: #333533;
   }
 
   @media (max-width: 576px) {
-    width: 50%;
+    left: 50%;
+    width: 90%;
     font-size: 12px;
     padding: 10px;
     border-radius: 10px;
-    height: 200px;
+    height: 250px;
   }
 `
 export const Title = styled.h1`
@@ -85,9 +86,18 @@ color: #333533;
     text-shadow: 2px 2px 8px #242423;
   }
 
+
   span {
     color: #F5CB5C;
     text-shadow: 2px 2px 8px #E8EDDF;
+    
+  }
+
+  
+
+  @media (max-width: 576px) {
+    font-size: 55px;
+    
   }
 `
 export const Button = styled.button`

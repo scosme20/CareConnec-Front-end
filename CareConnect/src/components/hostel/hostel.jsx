@@ -12,6 +12,7 @@ const Hostel = () => {
   }, []);
 
   return (
+  
     <BackgroundColor>
     <HostelContainer>
       <h1>Albergues</h1>
@@ -19,6 +20,7 @@ const Hostel = () => {
       <HostelList />
     </HostelContainer>
     </BackgroundColor>
+
   );
 };
 
