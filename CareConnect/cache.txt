@@ -1,0 +1,4 @@
+framer-motion
+react-slick
+slick-carousel
+react-icons
