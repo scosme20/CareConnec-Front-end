@@ -1,4 +1,3 @@
-// hooks/useDonation.js
 import { useContext } from 'react';
 import { DonationContext } from '../contexts/DonationContext';
 

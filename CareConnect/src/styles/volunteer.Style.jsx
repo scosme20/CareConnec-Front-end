@@ -1,5 +1,3 @@
-// src/styles/volunteer.Style.jsx
-
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`

@@ -1,21 +1,22 @@
-// Login.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../store/actions/authActions'
 import { logger } from '../../../logs/logger';
 import { FormContainer } from '../../../styles/LoginStyles';
-import api from '../../../services/apiService'; 
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.post('/auth/login', { email, password }); 
-      console.log('Login', response.data);
+      await dispatch(login(email, password));
       navigate('/overview');
       logger.log('User logged in successfully.');
     } catch (error) {
@@ -48,6 +49,7 @@ export const Login = () => {
     </FormContainer>
   );
 };
+
 
 
 
