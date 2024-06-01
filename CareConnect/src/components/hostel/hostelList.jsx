@@ -3,7 +3,7 @@ import { useHostelContext } from '../../context/hostelContext';
 import { ListContainer, Item } from '../../styles/style';
 
 const HostelList = () => {
-  const { hostels, deleteHostel, selectHostel, edit } = useHostelContext(); 
+  const { hostels, deleteHostel, selectHostel } = useHostelContext(); 
 
   if (!hostels || hostels.length === 0) {
     return <p>Não há albergues disponíveis.</p>;
@@ -19,7 +19,7 @@ const HostelList = () => {
           <p>Capacidade: {hostel.capacidade}</p>
           <p>Serviços: {hostel.servicos}</p>
           <button onClick={() => deleteHostel(hostel._id)}>Excluir</button>
-          <button onClick={() => edit(hostel)}>Editar</button>
+          <button onClick={() => selectHostel(hostel)}>Editar</button>
         </Item>
       ))}
     </ListContainer>

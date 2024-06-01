@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logger } from '../../../logs/logger';
 import { FormContainer } from '../../../styles/RegisterStyles';
+import api from '../../../services/apiService';
 
 export const Register = () => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -19,7 +21,8 @@ export const Register = () => {
     }
 
     try {
-      console.log('Register', { email, password });
+      const response = await api.post('/auth/register', { username, email, password }); 
+      console.log('Register', response.data);
       navigate('/overview');
       logger.log('User registered successfully.');
     } catch (error) {
@@ -30,6 +33,15 @@ export const Register = () => {
   return (
     <FormContainer onSubmit={handleRegister}>
       <h2>Register</h2>
+      <div>
+        <label>Username:</label> 
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
       <div>
         <label>Email:</label>
         <input
@@ -61,4 +73,5 @@ export const Register = () => {
     </FormContainer>
   );
 };
+
 
