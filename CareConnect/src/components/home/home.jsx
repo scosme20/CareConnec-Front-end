@@ -7,7 +7,7 @@ import { logger } from '../../logs/logger';
 import { FormContainer } from '../../styles/formContsiner';
 import { HomeContainer } from '../../styles/formContsiner'; 
 import { AuthContainer } from '../../styles/formContsiner'; 
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion'
 
 export const Login = ({ switchToRegister }) => { 
   const [email, setEmail] = useState('');
