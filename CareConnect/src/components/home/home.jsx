@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/actions/authActions';
 import { register } from '../../store/actions/authActions';
-import { logger } from '../../logs/logger';
 import { FormContainer } from '../../styles/formContsiner';
 import { HomeContainer } from '../../styles/formContsiner'; 
 import { AuthContainer } from '../../styles/formContsiner'; 
