@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHostelContext } from '../../context/hostelContext';
 
 const HostelForm = () => {
-  const { createOrUpdateHostel } = useHostelContext();
+  const { createHostel, updateHostel, selectedHostel, clearSelection } = useHostelContext();
   const [formData, setFormData] = useState({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
+
+  useEffect(() => {
+    if (selectedHostel) {
+      setFormData(selectedHostel);
+    } else {
+      setFormData({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
+    }
+  }, [selectedHostel]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createOrUpdateHostel(formData);
+    if (formData._id) {
+      await updateHostel(formData._id, formData);
+    } else {
+      await createHostel(formData);
+    }
+    clearSelection();
     setFormData({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
   };
 
@@ -20,11 +33,8 @@ const HostelForm = () => {
     <form onSubmit={handleSubmit}>
       <input type="text" name="nome" value={formData.nome} onChange={handleChange} placeholder="Nome" required />
       <input type="text" name="localizacao" value={formData.localizacao} onChange={handleChange} placeholder="Localização" required />
-      {/* Alterado o nome das chaves para corresponder ao estado */}
       <input type="number" name="capacidade" value={formData.capacidade} onChange={handleChange} placeholder="Capacidade" required />
-      {/* Alterado o nome das chaves para corresponder ao estado */}
       <input type="text" name="servicos" value={formData.servicos} onChange={handleChange} placeholder="Serviços" required />
-      {/* Alterado o nome das chaves para corresponder ao estado */}
       <button type="submit">Salvar</button>
     </form>
   );

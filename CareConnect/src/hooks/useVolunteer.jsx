@@ -1,4 +1,3 @@
-// useVolunteer.js
 import { useContext } from 'react';
 import { VolunteerContext } from '../context/volunteerContext';
 

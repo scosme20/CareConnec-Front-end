@@ -12,16 +12,16 @@ export default class HostelRepository {
   }
 
   static async updateHostel(id, hostelData) {
-    const response = await api.put(`/hostel/${id}`, hostelData);
-    return response.data;
+    console.log(`Enviando solicitação PUT para /hostel/${id} com os dados:`, hostelData);
+    return api.put(`/hostel/${id}`, hostelData);
   }
-  
 
   static async deleteHostel(id) {
     const response = await api.delete(`/hostel/${id}`);
     return response.data;
   }
 }
+
 
 
 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,13 +8,13 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      console.log('Login', { email, password });
-
+      await dispatch(login(email, password));
       navigate('/overview');
       logger.log('User logged in successfully.');
     } catch (error) {
@@ -46,5 +47,7 @@ export const Login = () => {
     </FormContainer>
   );
 };
+
+
 
 

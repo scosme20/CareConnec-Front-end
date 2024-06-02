@@ -5,6 +5,7 @@ const HostelContext = createContext();
 
 const HostelProvider = ({ children }) => {
   const [hostels, setHostels] = useState([]);
+  const [selectedHostel, setSelectedHostel] = useState(null); 
 
   const fetchHostels = async () => {
     try {
@@ -16,45 +17,57 @@ const HostelProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchHostels();
-  }, []); 
-
-  const createOrUpdateHostel = async (hostel) => {
+  const createHostel = async (hostel) => {
     try {
-      if (hostel._id) {
-        await HostelRepository.updateHostel(hostel._id, hostel);
-      } else {
-        await HostelRepository.createHostel(hostel);
-      }
+      const response = await HostelRepository.createHostel(hostel);
+      setHostels([...hostels, response]);
+    } catch (error) {
+      console.error('Erro ao criar albergue:', error);
+    }
+  };
+
+  const updateHostel = async (id, updatedHostel) => {
+    try {
+      await HostelRepository.updateHostel(id, updatedHostel);
       fetchHostels();
     } catch (error) {
-      console.error('Erro ao criar/atualizar albergue:', error);
+      console.error('Erro ao atualizar albergue:', error);
     }
   };
 
   const deleteHostel = async (id) => {
     try {
       await HostelRepository.deleteHostel(id);
-      fetchHostels();
+      setHostels(hostels.filter(hostel => hostel._id !== id));
     } catch (error) {
       console.error('Erro ao excluir albergue:', error);
     }
   };
 
-  // Função para editar um albergue
-  const editHostel = async (id, newData) => {
-    try {
-      await HostelRepository.updateHostel(id, newData);
-      fetchHostels();
-    } catch (error) {
-      console.error('Erro ao editar albergue:', error);
-    }
+  const selectHostel = (hostel) => {
+    setSelectedHostel(hostel);
   };
+
+  const clearSelection = () => {
+    setSelectedHostel(null);
+  };
+
+  useEffect(() => {
+    fetchHostels();
+  }, []);
 
   return (
     <HostelContext.Provider
-      value={{ hostels, fetchHostels, createOrUpdateHostel, deleteHostel, editHostel }}
+      value={{
+        hostels,
+        selectedHostel,
+        fetchHostels,
+        createHostel,
+        updateHostel,
+        deleteHostel,
+        selectHostel,
+        clearSelection
+      }}
     >
       {children}
     </HostelContext.Provider>
@@ -64,6 +77,7 @@ const HostelProvider = ({ children }) => {
 export { HostelContext, HostelProvider };
 
 export const useHostelContext = () => useContext(HostelContext);
+
 
 
 
