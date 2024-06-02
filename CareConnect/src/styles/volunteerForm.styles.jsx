@@ -9,24 +9,38 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   padding: 10px;
-  margin: 5px 0;
+  margin: 10px 0;
   width: 300px;
-  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  background-color: #E8EDDF;
 `;
 
 export const Button = styled.button`
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 1em;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #CFDBD5;
+  color: #333533;
+  border: none;
+  border-radius: 30px;
   cursor: pointer;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
 
   &:first-of-type {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #333533;
+    color: #CFDBD5;
   }
 
   &:last-of-type {
-    background-color: #f44336;
-    color: white;
+    background-color: #CFDBD5;
+    color: #333533;
   }
 `;

@@ -1,15 +1,16 @@
 import React from 'react';
 import DonationForm from './donationForm';
 import DonationList from './donationList';
+import { DonationPage } from '../../styles/Donation.styles';
 
 const Donation = () => {
   return (
-    <div>
+    <DonationPage>
       <h2>Cadastrar Doação</h2>
       <DonationForm />
-      <h2>Lista de Doações</h2>
+        <h2>Lista de Doações</h2>
       <DonationList />
-    </div>
+    </DonationPage>
   );
 };
 
