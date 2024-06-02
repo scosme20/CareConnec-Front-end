@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHostelContext } from '../../context/hostelContext';
+import { FloppyDisk } from "@phosphor-icons/react";
+import { BackgroundColor, Button } from '../../styles/hostel.styles';
+
 
 const HostelForm = () => {
   const { createHostel, updateHostel, selectedHostel, clearSelection } = useHostelContext();
@@ -30,13 +33,17 @@ const HostelForm = () => {
   };
 
   return (
+    <>
+    <BackgroundColor/>
     <form onSubmit={handleSubmit}>
       <input type="text" name="nome" value={formData.nome} onChange={handleChange} placeholder="Nome" required />
       <input type="text" name="localizacao" value={formData.localizacao} onChange={handleChange} placeholder="Localização" required />
       <input type="number" name="capacidade" value={formData.capacidade} onChange={handleChange} placeholder="Capacidade" required />
       <input type="text" name="servicos" value={formData.servicos} onChange={handleChange} placeholder="Serviços" required />
+      {/* Alterado o nome das chaves para corresponder ao estado */}
       <button type="submit">Salvar</button>
     </form>
+</>
   );
 };
 

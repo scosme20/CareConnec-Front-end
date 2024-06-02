@@ -3,6 +3,7 @@ import HomelessList from './homelessList';
 import HomelessForm from './homelessForm';
 import { useHomelessContext } from '../../context/homelessContext';
 import { HomelessContainer } from '../../styles/homelessStyle';
+import { BackgroundColor } from '../../styles/hostel.styles';
 
 const Homeless = () => {
   const { fetchHomelessList } = useHomelessContext();
@@ -12,11 +13,13 @@ const Homeless = () => {
   }, [fetchHomelessList]);
 
   return (
+    <BackgroundColor>
     <HomelessContainer>
       <h1>Moradores de Rua</h1>
       <HomelessForm />
       <HomelessList />
     </HomelessContainer>
+    </BackgroundColor>
   );
 };
 

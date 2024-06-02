@@ -1,6 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { HomelessContext } from '../../context/homelessContext';
 import { Form, Input, Button } from '../../styles/homelessStyle';
+import { FloppyDisk } from "@phosphor-icons/react";
+
+
 
 const HomelessForm = () => {
   const { createHomeless, updateHomeless, selectedHomeless, clearSelection } = useContext(HomelessContext);
@@ -30,13 +33,17 @@ const HomelessForm = () => {
   };
 
   return (
+    
     <Form onSubmit={handleSubmit}>
       <Input name="nome" value={formData.nome} onChange={handleChange} placeholder="Nome" required />
       <Input name="idade" value={formData.idade} onChange={handleChange} placeholder="Idade" required />
       <Input name="historico" value={formData.historico} onChange={handleChange} placeholder="Histórico" required />
-      <Button type="submit">Salvar</Button>
+      <Button type="submit">
+      <FloppyDisk size={32} />
+      </Button>
       {selectedHomeless && <Button type="button" onClick={clearSelection}>Cancelar</Button>}
     </Form>
+   
   );
 };
 

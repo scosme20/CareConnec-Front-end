@@ -1,33 +1,9 @@
 import React from 'react';
-import Slider from 'react-slick';
-import { motion } from 'framer-motion';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import image1 from '../../assets/sociedade.png';
-import image2 from '../../assets/albergue.jpeg';
-import {
-  OverviewContainer,
-  CarouselContainer,
-  FeaturesSection,
-  TestimonialsSection,
-  ContactSection
-} from '../../styles/formContsiner'; 
 
-const PrevArrow = (props) => {
-  const { className, style, onClick } = props;
+function Overview() {
   return (
-    <div className={className} style={{ ...style, left: '10px', zIndex: 1 }} onClick={onClick}>
-      <FaArrowLeft style={{ color: '#333', fontSize: '24px', cursor: 'pointer' }} />
-    </div>
-  );
-};
-
-const NextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div className={className} style={{ ...style, right: '10px', zIndex: 1 }} onClick={onClick}>
-      <FaArrowRight style={{ color: '#333', fontSize: '24px', cursor: 'pointer' }} />
+    <div>
+      <h1>Overview Page</h1>
     </div>
   );
 };
