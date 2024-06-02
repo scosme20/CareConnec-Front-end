@@ -1,62 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { useHostelContext } from '../../context/hostelContext';
+import React, { useState, useContext, useEffect } from 'react';
+import { HomelessContext } from '../../context/homelessContext';
+import { Form, Input, Button } from '../../styles/homelessStyle';
 import { FloppyDisk } from "@phosphor-icons/react";
-import { BackgroundColor, Button } from '../../styles/hostel.styles';
 
 
-const HostelForm = () => {
-  const { createHostel, updateHostel, selectedHostel, clearSelection } = useHostelContext();
-  const [formData, setFormData] = useState({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
+
+const HomelessForm = () => {
+  const { createHomeless, updateHomeless, selectedHomeless, clearSelection } = useContext(HomelessContext);
+  const [formData, setFormData] = useState({ nome: '', idade: '', historico: '', necessidades: {} });
 
   useEffect(() => {
-    if (selectedHostel) {
-      setFormData(selectedHostel);
+    if (selectedHomeless) {
+      setFormData(selectedHomeless);
     } else {
-      setFormData({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
+      setFormData({ nome: '', idade: '', historico: '', necessidades: {} });
     }
-  }, [selectedHostel]);
+  }, [selectedHomeless]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (formData._id) {
-      await updateHostel(formData._id, formData);
+      updateHomeless(formData._id, formData);
     } else {
-      await createHostel(formData);
+      createHomeless(formData);
     }
-    clearSelection();
-    setFormData({ nome: '', localizacao: '', capacidade: 0, servicos: '' });
+    clearSelection(); // Limpa a seleção após o envio do formulário
   };
 
   return (
-    <>
-    <BackgroundColor/>
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="nome" value={formData.nome} onChange={handleChange} placeholder="Nome" required />
-      <input type="text" name="localizacao" value={formData.localizacao} onChange={handleChange} placeholder="Localização" required />
-      <input type="number" name="capacidade" value={formData.capacidade} onChange={handleChange} placeholder="Capacidade" required />
-      <input type="text" name="servicos" value={formData.servicos} onChange={handleChange} placeholder="Serviços" required />
-      {/* Alterado o nome das chaves para corresponder ao estado */}
-      <button type="submit">Salvar</button>
-    </form>
-</>
+    
+    <Form onSubmit={handleSubmit}>
+      <Input name="nome" value={formData.nome} onChange={handleChange} placeholder="Nome" required />
+      <Input name="idade" value={formData.idade} onChange={handleChange} placeholder="Idade" required />
+      <Input name="historico" value={formData.historico} onChange={handleChange} placeholder="Histórico" required />
+      <Button type="submit">
+      <FloppyDisk size={32} />
+      </Button>
+      {selectedHomeless && <Button type="button" onClick={clearSelection}>Cancelar</Button>}
+    </Form>
+   
   );
 };
 
-export default HostelForm;
-
-
-
-
-
-
-
-
-
-
-
-
+export default HomelessForm;

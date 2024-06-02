@@ -1,43 +1,34 @@
-import React from 'react';
-import { useHostelContext } from '../../context/hostelContext';
-import { ListContainer, Item } from '../../styles/style';
+import React, { useContext } from 'react';
+import { HomelessContext } from '../../context/homelessContext';
+import { HomelessItem, HomelessDetails, Button } from '../../styles/homelessStyle';
 import { Trash, PencilSimple } from "@phosphor-icons/react";
-import { BackgroundColor } from '../../styles/hostel.styles';
 
 
-const HostelList = () => {
-  const { hostels, deleteHostel, selectHostel } = useHostelContext(); 
 
-  if (!hostels || hostels.length === 0) {
-    return <p>Não há albergues disponíveis.</p>;
-  }
+const HomelessList = () => {
+  const { homelessList, deleteHomeless, selectHomeless } = useContext(HomelessContext);
 
   return (
+   
     <div>
-    <BackgroundColor/>
-    <ListContainer>
-      <h2>Lista de Albergues</h2>
-      {hostels.map(hostel => (
-        <Item key={hostel._id}>
-          <h3>{hostel.nome}</h3>
-          <p>Localização: {hostel.localizacao}</p>
-          <p>Capacidade: {hostel.capacidade}</p>
-          <p>Serviços: {hostel.servicos}</p>
-          <button onClick={() => deleteHostel(hostel._id)}>Excluir</button>
-          <button onClick={() => edit(hostel)}>Editar</button>
-        </Item>
+      {homelessList.map((homeless) => (
+        <HomelessItem key={homeless._id}>
+          <HomelessDetails>
+            <h3>{homeless.nome}</h3>
+            <p>Idade: {homeless.idade}</p>
+            <p>Histórico: {homeless.historico}</p>
+          </HomelessDetails>
+          <Button onClick={() => selectHomeless(homeless)}>
+            <PencilSimple size={32} />
+          </Button>
+          <Button onClick={() => deleteHomeless(homeless._id)}>
+            <Trash size={32} />
+          </Button>
+        </HomelessItem>
       ))}
-    </ListContainer>
     </div>
-    
+
   );
 };
 
-export default HostelList;
-
-
-
-
-
-
-
+export default HomelessList;
